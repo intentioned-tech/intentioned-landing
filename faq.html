@@ -210,13 +210,22 @@
                     <li><strong>Mistral:</strong> 7B variant - fast inference</li>
                     <li><strong>GEITje (Dutch):</strong> 7B - specialized for Dutch language</li>
                 </ul>
+                <div class="highlight-box">
+                    <strong>🔓 Model Flexibility:</strong> Any model compatible with HuggingFace Transformers can be used—not just the ones listed above. 
+                    This is a major strength of Intentioned. However, you should <strong>always test models thoroughly</strong> before deploying them 
+                    and <strong>check their license terms</strong> to ensure compliance with your use case and applicable regulations.
+                </div>
                 <div class="info-box">
-                    <strong>VRAM Requirements:</strong>
+                    <strong>VRAM Requirements (GPU):</strong>
                     <ul style="margin-bottom: 0;">
                         <li>1-3B models: 4-6GB VRAM (RTX 3060 12GB works great)</li>
                         <li>7-9B models: 8-12GB VRAM (RTX 3080/3090 recommended)</li>
                         <li>4-bit quantization reduces requirements by ~60%</li>
                     </ul>
+                </div>
+                <div class="warning-box">
+                    <strong>⚠️ CPU-Only Mode:</strong> If you don't have a GPU, you'll need to use much smaller models (1B-3B parameters max) 
+                    and ensure you have sufficient RAM (16GB+ recommended). CPU inference is significantly slower than GPU inference.
                 </div>
                 <p>
                     Configure your model in the <code>config.json</code> file or through the configuration tool. 
@@ -241,8 +250,8 @@
                     promise for anxiety and social phobia (Fitzpatrick et al., 2017)</li>
                     <li><strong>Speech Analytics:</strong> Filler word reduction and pacing feedback have been 
                     used in public speaking training for decades (Toastmasters International research)</li>
-                    <li><strong>Eye Contact Training:</strong> Gaze-contingent feedback improves social attention 
-                    in autism spectrum conditions (Tanaka et al., 2010)</li>
+                    <li><strong>Eye Contact Training:</strong> Gaze-contingent feedback has been shown to improve social attention 
+                    and engagement in various training contexts</li>
                 </ul>
                 <div class="warning-box">
                     <strong>Disclaimer:</strong> Intentioned is an educational tool, not a medical device. 
@@ -281,6 +290,47 @@
             </div>
         </div>
         
+        <div class="faq-item">
+            <div class="faq-question">My economy has effectively dollarized! I cannot afford a GPU let alone the service Intentioned provides! Can I sign up as a non-profit or similar?</div>
+            <div class="faq-answer">
+                <p>
+                    We understand that many regions face severe economic challenges, including currency devaluation, 
+                    hyperinflation, or de facto dollarization that makes international software services unaffordable.
+                </p>
+                <div class="highlight-box">
+                    <strong>📧 Contact Us Directly:</strong> If your local currency is extremely weak and standard pricing 
+                    is genuinely unaffordable, please reach out to us at <a href="mailto:akotler@pace.edu">akotler@pace.edu</a>.
+                </div>
+                <p>
+                    We may be able to offer you an affordable plan on a case-by-case basis if you can provide:
+                </p>
+                <ul>
+                    <li>Valid proof of your address (utility bill, government ID, etc.)</li>
+                    <li>Proof of your organization or business registration (if applicable)</li>
+                    <li>Confirmation that you already have compatible hardware to run the software</li>
+                </ul>
+                <div class="warning-box">
+                    <strong>Note:</strong> These special arrangements will be deprioritized compared to standard business 
+                    customers regarding support response times and feature requests. However, you will still receive 
+                    full access to the software and critical updates.
+                    
+                    We also do not offer these plans for EU customers due to GDPR compliance costs. Dollarization relief 
+                    plans are currently not available in Ukraine, Russia, Israel, the Golan Heights, 
+                    Palestine/West Bank/Gaza Strip, and Syria due to ongoing conflicts and potential economic instability that 
+                    would make consistent pricing impossible in addition to potential sanctions. These regions can still get reduced pricing through academic or 
+                    non-profit channels so those with no malice intent can access our software.
+
+                    Examples of regions where we can consider dollarization relief plans include:
+                    <ul>
+                        <li>Venezuela (Future offerings TBD)</li>
+                        <li>Zimbabwe</li>
+                        <li>Lebanon (Must demonstrate stable financial situation)</li>
+                        <li>Argentina</li>
+                        <li>Turkey (No differential pricing available, must pay in Lira converted from other currency)</li>
+                </div>
+            </div>
+        </div>
+        
         <div class="category-header">Hardware & Availability</div>
         
         <div class="faq-item">
@@ -292,17 +342,37 @@
                 </p>
                 <ul>
                     <li><strong>Used Market:</strong> The RTX 3060 12GB and RTX 3090 are now previous-generation 
-                    cards with a healthy used market. Prices on these cards tend to be more stable.</li>
+                    cards with a healthy used market. Prices on these cards tend to be more stable.
+                    Try to avoid the RTX 20 series and earlier as these cards are very expensive and less efficient.
+                    These cards are also more gamer oriented than AI efficient as some are made before the
+                    advent of AI workloads.</li>
                     <li><strong>Cloud Alternatives:</strong> For users who cannot obtain local hardware, 
                     cloud GPU services (Vast.ai, RunPod, Lambda Labs) offer hourly rentals.</li>
                     <li><strong>CPU Fallback:</strong> While slower, models can run on CPU with llama.cpp 
                     for users without GPU access.</li>
                     <li><strong>Lighter Models:</strong> We're optimizing for smaller models (1-3B parameters) 
                     that run on more accessible hardware like the RTX 4060.</li>
+                    <li><strong>Do not get a GT series GPU with a high number (e.g., GT 1030, GT 710, etc.)</strong> as these are
+                    not designed for AI workloads, extremely old by modern standards, and will perform poorly or potentially not run at all.</li>
+                    <li><strong>Stay Informed:</strong> Be aware of scams and price gouging in the hardware market. Many RTX 30 series cards have been replaced with GT series cards.
+                    There have been instances of sellers misrepresenting GT series cards as RTX series cards to take advantage of high demand.</li>
+                    <li>In addition, some GPUs have been replaced with literal rocks in packaging, have had chips removed, or have been otherwise tampered with to deceive buyers.</li>
+                    <li>If you receive a GPU that appears tampered with or not as described, report the seller immediately and avoid using the hardware. If necessary, contact the platform or payment provider to dispute the transaction.
+                    In addition, consider leaving a review or warning for other potential buyers to prevent further scams. Contact the police as well if need be. Initiate a chargeback or regional equivalent if needed to
+                    force your money back via your credit card company.</li>
+                    <li><strong>BUYER BEWARE: Always use CREDIT when buying GPUs for proof of purchase and seller protection. If buying from a friend, make sure you pay through paypal or similar and enable seller protection. Pay the additional
+                    fees if needed to ensure you have recourse in case of fraud and to make sure your seller is paid the price you agreed upon. You may need a calculator for this. Google "PayPal transaction fee seller protection percentage."</strong></li>
+                    </strong> 
                 </ul>
+                <div class="warning-box">
+                    <strong>⚠️ Cloud Usage Warning:</strong> If you choose to use cloud GPU services instead of local hardware, 
+                    we <strong>strongly recommend selecting a GDPR-compliant provider</strong> with servers in your region. 
+                    Using cloud services means your conversation data leaves your machine, which introduces privacy risks. 
+                    This is inherently riskier than running locally—proceed with caution and review each provider's data handling policies.
+                </div>
                 <div class="info-box">
                     <strong>Recommended Budget Build (2026):</strong> An RTX 3060 12GB (~€285 used) with a 
-                    Ryzen 5 5600 and 32GB RAM provides excellent performance for Intentioned.
+                    Ryzen 5 5600 and 16GB/32GB RAM DDR4/DDR5 provides excellent performance for Intentioned.
                 </div>
                 <p>
                     We monitor hardware markets and will update our recommendations as conditions change.

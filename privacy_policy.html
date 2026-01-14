@@ -268,13 +268,34 @@
         </ul>
         <p>All AI processing occurs locally. Model weights are downloaded once and cached on your machine.</p>
         
-        <h2>9. Data Retention</h2>
+        <h2>9. License Key System</h2>
+        <div class="highlight-box">
+            <strong>License Validation:</strong> If you are using a licensed version of Intentioned.tech, 
+            the application may communicate with our license server to validate your license key.
+        </div>
+        <p>The license validation system collects the following data:</p>
+        <ul>
+            <li><strong>License key:</strong> Your unique license key (transmitted securely)</li>
+            <li><strong>Hardware fingerprint:</strong> A hash of your server's hardware identifiers (hostname, MAC address, CPU) - used only to enforce the 3-server limit per license</li>
+            <li><strong>Activation timestamps:</strong> When your license was activated on each server</li>
+            <li><strong>IP address:</strong> Logged for security and abuse prevention</li>
+        </ul>
+        <p><strong>What is NOT collected:</strong></p>
+        <ul>
+            <li>No conversation data, audio, or transcripts</li>
+            <li>No user activity or usage patterns</li>
+            <li>No personal identifying information beyond the hardware fingerprint</li>
+        </ul>
+        <p>You can run your own license server for complete data sovereignty, or use offline validation mode.</p>
+        
+        <h2>10. Data Retention</h2>
         <ul>
             <li>Session data: Cleared when you end a session or close the application</li>
             <li>Safety violation logs: Retained until you manually delete them</li>
+            <li>License activation data: Retained on license server until deactivation</li>
         </ul>
         
-        <h2>10. Your Rights</h2>
+        <h2>11. Your Rights</h2>
         <p>Since this is a self-hosted application, you have complete control over your data:</p>
         <ul>
             <li><strong>Access:</strong> All data is stored locally and accessible to you</li>
@@ -283,7 +304,7 @@
             <li><strong>Modification:</strong> You can modify the application's behavior through the source code</li>
         </ul>
         
-        <h2>11. Security</h2>
+        <h2>12. Security</h2>
         <p>
             Data security depends on your deployment configuration. We recommend:
         </p>
@@ -294,7 +315,7 @@
             <li>Regularly reviewing and clearing safety violation logs</li>
         </ul>
         
-        <h2>12. Multilingual Support</h2>
+        <h2>13. Multilingual Support</h2>
         <p>
             Intentioned.tech supports 28 EU languages. Language detection and preferences are:
         </p>
@@ -304,13 +325,13 @@
             <li>Never transmitted to external services</li>
         </ul>
         
-        <h2>13. Changes to This Policy</h2>
+        <h2>14. Changes to This Policy</h2>
         <p>
             This privacy policy may be updated as the application evolves. 
             Check the "Last Updated" date at the top of this document for the most recent version.
         </p>
         
-        <h2>14. Contact</h2>
+        <h2>15. Contact</h2>
         <p>
             For questions about this privacy policy or the application, please contact us at 
             <a href="mailto:akotler@pace.edu">akotler@pace.edu</a> or visit 

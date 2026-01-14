@@ -611,6 +611,7 @@
             <div class="nav-links">
                 <a href="#features" class="nav-link">Features</a>
                 <a href="#tech" class="nav-link">Tech</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
                 <a href="privacy_policy.html" class="nav-link">Privacy</a>
                 <a href="https://app.intentioned.tech" class="btn btn-primary">Launch Demo</a>
             </div>
@@ -767,6 +768,20 @@
         <h2>Coming Soon</h2>
         <p>We're putting the finishing touches on Intentioned. Sign up to be notified when we launch.</p>
         
+        <!-- Mailing List Signup -->
+        <div style="margin: 2rem auto; max-width: 500px; padding: 1.5rem; background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border-color);">
+            <h3 style="font-size: 1rem; margin-bottom: 0.75rem; color: var(--text-primary); text-align: center;">📬 Join Our Mailing List</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem; text-align: center;">Get updates on new features, launch announcements, and exclusive early access.</p>
+            <form id="mailingListForm" style="display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center;">
+                <input type="email" id="emailInput" placeholder="your@email.com" required 
+                    style="flex: 1; min-width: 200px; padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-secondary); color: var(--text-primary); font-size: 0.9rem;">
+                <button type="submit" class="btn btn-primary" style="padding: 0.75rem 1.5rem;">
+                    Subscribe
+                </button>
+            </form>
+            <p id="mailingListMessage" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.75rem; text-align: center;">We respect your privacy. Unsubscribe anytime.</p>
+        </div>
+        
         <!-- EU Languages Section -->
         <div style="margin: 2rem 0; padding: 1.5rem; background: rgba(99, 102, 241, 0.1); border-radius: 12px; border: 1px solid rgba(99, 102, 241, 0.2);">
             <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--text-primary);">🇪🇺 Launching with Full EU Language Support</h3>
@@ -808,10 +823,13 @@
                 © 2025-2026 Ari Kotler. All Rights Reserved. Intentioned.tech
             </div>
             <div class="footer-links">
-                <a href="LICENSE" class="footer-link">License (Proprietary)</a>
+                <a href="https://github.com/KoJesko/intentioned.tech/blob/main/LICENSE" class="footer-link" target="_blank">License (Proprietary)</a>
                 <a href="privacy_policy.html" class="footer-link">Privacy</a>
                 <a href="terms_of_use.html" class="footer-link">Terms</a>
             </div>
+        </div>
+        <div style="text-align: center; padding: 1rem 0 0.5rem; color: var(--text-muted); font-size: 0.85rem;">
+            ♥️ Built with love for all markets in Hudson Valley, New York
         </div>
     </footer>
 
@@ -852,6 +870,37 @@
             card.style.transform = 'translateY(20px)';
             card.style.transition = 'opacity 0.6s, transform 0.6s';
             observer.observe(card);
+        });
+
+        // Mailing list form handler
+        document.getElementById('mailingListForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            const messageEl = document.getElementById('mailingListMessage');
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Subscribing...';
+            
+            try {
+                // For now, store in localStorage until backend is ready
+                const subscribers = JSON.parse(localStorage.getItem('intentioned_subscribers') || '[]');
+                if (!subscribers.includes(email)) {
+                    subscribers.push(email);
+                    localStorage.setItem('intentioned_subscribers', JSON.stringify(subscribers));
+                }
+                
+                messageEl.style.color = 'var(--success)';
+                messageEl.textContent = '✅ Thanks for subscribing! We\'ll notify you when we launch.';
+                document.getElementById('emailInput').value = '';
+                submitBtn.textContent = 'Subscribed!';
+            } catch (err) {
+                messageEl.style.color = '#ef4444';
+                messageEl.textContent = '❌ Something went wrong. Please try again.';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Subscribe';
+            }
         });
     </script>
 </body>

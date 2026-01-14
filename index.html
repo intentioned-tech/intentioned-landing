@@ -136,6 +136,32 @@
             border-color: var(--text-muted);
         }
 
+        .status-banner {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            z-index: 900;
+            display: flex;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .status-banner .status-content {
+            pointer-events: auto;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.16), rgba(245, 158, 11, 0.18));
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        .status-banner strong {
+            color: #fbbf24;
+        }
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -618,6 +644,12 @@
             </div>
         </div>
     </nav>
+
+    <div class="status-banner" role="status" aria-live="polite">
+        <div class="status-content">
+            ⚠️ <strong>Verizon outage:</strong> Some users may experience connectivity issues.
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">

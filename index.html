@@ -236,55 +236,33 @@
             margin-bottom: 2.5rem;
             line-height: 1.7;
         }
+
+        /* Slot Machine Effect */
         .hero-word-rotator {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
+            display: inline-block;
+            vertical-align: bottom;
+            height: 1.1em; /* Matches h1 line-height */
+            overflow: hidden;
             position: relative;
+            margin-bottom: -0.1em; /* Visual alignment fix */
+        }
+
+        .hero-word-wrapper {
+            display: flex;
+            flex-direction: column;
+            /* Transition will be handled in JS for the slot machine effect */
         }
 
         .hero-word {
-            display: inline-block;
-            min-width: 6ch;
+            display: block;
+            height: 1.1em;
             text-align: left;
-            transition: opacity 0.6s ease, transform 0.6s ease;
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .hero-word.is-highlighted {
-            text-shadow: 0 0 18px rgba(168, 85, 247, 0.55), 0 0 32px rgba(59, 130, 246, 0.35);
-            filter: saturate(1.2);
-        }
-
-        .hero-word.is-switching {
-            opacity: 0;
-            transform: translateX(12px);
-        }
-
-        .hero-dial {
-            width: 18px;
-            height: 18px;
-            border: 2px solid rgba(255, 255, 255, 0.15);
-            border-top-color: rgba(168, 85, 247, 0.9);
-            border-radius: 50%;
-            box-shadow: 0 0 18px rgba(168, 85, 247, 0.35);
-            opacity: 0;
-            transform: scale(0.8) rotate(0deg);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-            margin-left: 0.35rem;
-        }
-
-        .hero-dial.is-active {
-            opacity: 1;
-            animation: heroDialTick 0.9s ease;
-            transform: scale(1);
-        }
-
-        @keyframes heroDialTick {
-            0% { transform: rotate(0deg) scale(0.9); }
-            50% { transform: rotate(120deg) scale(1); }
-            100% { transform: rotate(0deg) scale(0.95); }
+            padding-left: 0.25rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
         }
 
         .hero-buttons {
@@ -656,7 +634,7 @@
             <span class="hero-badge-dot"></span>
             <span>100% Offline • GDPR Compliant</span>
         </div>
-        <h1>Master Every <span class="hero-word-rotator"><span class="hero-word" id="heroWord">Conversation</span><span class="hero-dial" id="heroDial" aria-hidden="true"></span></span></h1>
+        <h1>Master Every <div class="hero-word-rotator"><div class="hero-word-wrapper" id="heroWordWrapper"></div></div></h1>
         <p class="hero-subtitle">
             Privacy-first social dynamics training. Powered by local LLMs and real-time voice analysis. 
             No cloud, no latency, no data leaks.
@@ -923,9 +901,8 @@
             }
         });
 
-        // Hero word rotator
-        const heroWordEl = document.getElementById('heroWord');
-        const heroDialEl = document.getElementById('heroDial');
+        // Hero word rotator (Slot Machine Style)
+        const wrapper = document.getElementById('heroWordWrapper');
         const heroWords = [
             'Conversation',
             'Day out',
@@ -937,40 +914,48 @@
             'Debrief',
             'Debate',
         ];
-        let heroWordIndex = 0;
 
-        function updateHeroWordEmphasis(word) {
-            if (!heroWordEl) return;
-            heroWordEl.classList.toggle('is-highlighted', word === 'Conversation');
+        let currentIndex = 0;
+
+        // Initialize words
+        if (wrapper) {
+            // Add words + clone of first word for seamless loop
+            [...heroWords, heroWords[0]].forEach(word => {
+                const div = document.createElement('div');
+                div.className = 'hero-word';
+                div.textContent = word;
+                wrapper.appendChild(div);
+            });
         }
 
         function scheduleHeroWordRotate() {
-            if (!heroWordEl) return;
+            if (!wrapper) return;
             const delay = 3500 + Math.random() * 4500;
+            
             setTimeout(() => {
-                if (!heroWordEl) return;
-                heroWordIndex = (heroWordIndex + 1) % heroWords.length;
-                heroWordEl.classList.add('is-switching');
-                if (heroDialEl) {
-                    heroDialEl.classList.add('is-active');
-                }
-                setTimeout(() => {
-                    const nextWord = heroWords[heroWordIndex];
-                    heroWordEl.textContent = nextWord;
-                    updateHeroWordEmphasis(nextWord);
-                    heroWordEl.classList.remove('is-switching');
-                }, 600);
+                currentIndex++;
+                
+                // Animate
+                wrapper.style.transition = 'transform 600ms linear';
+                wrapper.style.transform = `translateY(-${currentIndex * 1.1}em)`;
 
-                setTimeout(() => {
-                    heroDialEl?.classList.remove('is-active');
-                }, 1600);
+                // Handle loop
+                if (currentIndex === heroWords.length) {
+                    // Wait for transition to finish, then snap back
+                    setTimeout(() => {
+                        wrapper.style.transition = 'none';
+                        currentIndex = 0;
+                        wrapper.style.transform = `translateY(0)`;
+                        // Force reflow
+                        void wrapper.offsetHeight;
+                    }, 600);
+                }
 
                 scheduleHeroWordRotate();
             }, delay);
         }
 
-        if (heroWordEl) {
-            updateHeroWordEmphasis(heroWords[heroWordIndex]);
+        if (wrapper) {
             scheduleHeroWordRotate();
         }
 

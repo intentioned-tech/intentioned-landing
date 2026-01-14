@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Intentioned</title>
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --card-bg: #16161f;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b0;
+            --text-muted: #606070;
+            --accent: #6366f1;
+            --border-color: rgba(255, 255, 255, 0.08);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            color: var(--accent);
+        }
+        
+        .last-updated {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 32px;
+        }
+        
+        h2 {
+            font-size: 1.25rem;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+        
+        p, li {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        
+        ul, ol {
+            padding-left: 24px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight-box {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+        
+        .warning-box {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+        
+        code {
+            background: var(--bg-secondary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.875rem;
+        }
+        
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 24px;
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← Back to Home</a>
+        
+        <h1>Privacy Policy</h1>
+        <p class="last-updated">Last Updated: January 8, 2026</p>
+        
+        <h2>1. Introduction</h2>
+        <p>
+            Intentioned ("we", "our", "the application") is a self-hosted, open-source social skills training platform. 
+            This privacy policy explains how data is collected, stored, and used when you use this application.
+        </p>
+        
+        <div class="highlight-box">
+            <strong>Self-Hosted Notice:</strong> This application is designed to be self-hosted. 
+            All data processing occurs on your local machine or your own server. 
+            No data is sent to external third-party services unless explicitly configured by you.
+        </div>
+        
+        <h2>2. Data Collection</h2>
+        <p>The application may collect and process the following types of data during your training sessions:</p>
+        <ul>
+            <li><strong>Audio recordings:</strong> Voice input captured during conversations (processed locally, not stored after transcription)</li>
+            <li><strong>Transcribed text:</strong> Your spoken words converted to text for conversation analysis</li>
+            <li><strong>Conversation transcripts:</strong> The full dialogue between you and the AI assistant</li>
+            <li><strong>Webcam data:</strong> If enabled, facial landmark data for eye contact tracking (not stored as images/video)</li>
+            <li><strong>Performance metrics:</strong> Speaking pace, response times, filler word counts, and other communication metrics</li>
+        </ul>
+        
+        <h2>3. Safety Violation Logging</h2>
+        <div class="warning-box">
+            <strong>Important:</strong> When content is flagged by our AI moderation system, a record is created 
+            to help maintain platform safety and improve moderation accuracy.
+        </div>
+        
+        <p>Safety violation logs are stored locally on your machine in:</p>
+        <ul>
+            <li><strong>Windows:</strong> <code>%USERPROFILE%\Documents\simulation_safety_violations\</code></li>
+            <li><strong>macOS:</strong> <code>~/Documents/simulation_safety_violations/</code></li>
+            <li><strong>Linux:</strong> <code>~/Documents/simulation_safety_violations/</code></li>
+        </ul>
+        
+        <p>Each safety violation log contains:</p>
+        <ul>
+            <li>Timestamp of the incident</li>
+            <li>Session identifier (anonymized)</li>
+            <li>The message that triggered the violation</li>
+            <li>The reason for flagging</li>
+            <li>Full conversation transcript up to that point</li>
+        </ul>
+        
+        <p>
+            <strong>Purpose:</strong> These logs are stored locally for your own review and to help 
+            improve the moderation system.
+        </p>
+        
+        <div class="warning-box">
+            <strong>Repeated Violation Transmission:</strong> If 3 or more similar safety violations are 
+            detected from the same session, a summary report is automatically transmitted to a separate 
+            "transmitted_to_host" folder for host/administrator review. This is designed to identify 
+            patterns of misuse and ensure platform safety. The transmitted reports are stored in:
+            <br><br>
+            <code>[Documents]/simulation_safety_violations/transmitted_to_host/</code>
+        </div>
+        
+        <h2>4. Cookies and Local Storage</h2>
+        <p>This application uses cookies to remember your preferences across sessions:</p>
+        <ul>
+            <li><strong>Settings Cookies:</strong> Your TTS/STT engine preferences, voice selections, LLM parameters</li>
+            <li><strong>UI Preferences:</strong> Selected scenario, microphone mode, mute state</li>
+        </ul>
+        
+        <div class="highlight-box">
+            <strong>Cookie Details:</strong>
+            <ul>
+                <li>Cookies are stored locally in your browser only</li>
+                <li>No cookies are transmitted to external servers</li>
+                <li>Cookies expire after 1 year of inactivity</li>
+                <li>You can clear cookies at any time through your browser settings</li>
+            </ul>
+        </div>
+        
+        <p>Cookies used by this application:</p>
+        <ul>
+            <li><code>intentioned_tts_engine</code> - Your preferred text-to-speech engine</li>
+            <li><code>intentioned_kokoro_voice</code> - Selected Kokoro TTS voice</li>
+            <li><code>intentioned_vibevoice_voice</code> - Selected VibeVoice voice</li>
+            <li><code>intentioned_edge_voice</code> - Selected Edge TTS voice</li>
+            <li><code>intentioned_stt_engine</code> - Your preferred speech-to-text engine</li>
+            <li><code>intentioned_max_tokens</code> - LLM response length setting</li>
+            <li><code>intentioned_temperature</code> - LLM creativity setting</li>
+            <li><code>intentioned_scenario</code> - Last selected training scenario</li>
+            <li><code>intentioned_mic_mode</code> - Preferred microphone mode (VAD or Push-to-Talk)</li>
+            <li><code>intentioned_tts_muted</code> - Whether AI voice is muted</li>
+        </ul>
+        
+        <h2>5. Data Storage</h2>
+        <p>All data is stored locally on your machine or server:</p>
+        <ul>
+            <li>Audio is processed in real-time and immediately discarded after transcription</li>
+            <li>Session data exists only in memory during active sessions</li>
+            <li>Analysis results are displayed but not permanently stored unless you save them</li>
+            <li>Safety violation logs are the only data written to disk</li>
+        </ul>
+        
+        <h2>6. Third-Party Services</h2>
+        <p>The application may interact with external services for the following purposes:</p>
+        <ul>
+            <li><strong>Edge TTS (Microsoft):</strong> Text-to-speech synthesis (only the AI's response text is sent)</li>
+            <li><strong>CDN resources:</strong> Loading of face-api.js models for eye contact detection</li>
+        </ul>
+        <p>No conversation content or personal data is sent to these services beyond what is necessary for their function.</p>
+
+        <h2>7. Browser Extension Detection</h2>
+        <div class="highlight-box">
+            <strong>Malwarebytes Browser Guard Detection:</strong> This application includes code to detect 
+            when Malwarebytes Browser Guard is flagging our domain as a "Risky TLD" (false positive). 
+            This detection is used solely to display a helpful warning banner explaining how to whitelist the site.
+        </div>
+        <p>The detection works by:</p>
+        <ul>
+            <li>Attempting to load a small invisible resource from our own domain to detect if it's being blocked</li>
+            <li>Monitoring console logs for Browser Guard-specific messages</li>
+            <li>Checking for DOM elements injected by the extension</li>
+        </ul>
+        <p>This detection is entirely local and does not contact any external Malwarebytes servers.</p>
+        <p>
+            <strong>No data is collected or transmitted</strong> through this detection. It exists purely to 
+            improve user experience by explaining false positive blocks on .tech domains.
+        </p>
+
+        <h2>8. AI Models Used</h2>
+        <p>This application uses the following AI models, which run locally on your machine or server:</p>
+        <ul>
+            <li><strong>Speech-to-Text (STT):</strong>
+                <ul>
+                    <li><strong>NVIDIA Parakeet TDT 0.6B v3</strong> (default) - NVIDIA NeMo, CC-BY-4.0 license, 600M parameters</li>
+                    <li><strong>Wav2Vec2</strong> - Meta/Facebook, MIT license, CTC-based transcription</li>
+                    <li><strong>Vosk</strong> - Apache 2.0 license, offline-first, lightweight</li>
+                </ul>
+            </li>
+            <li><strong>Text-to-Speech (TTS):</strong>
+                <ul>
+                    <li><strong>Kokoro-82M</strong> (default) - Apache 2.0 license, 82M parameters, StyleTTS2 architecture</li>
+                    <li><strong>Edge TTS</strong> - Microsoft, requires internet connection</li>
+                    <li><strong>VibeVoice Realtime 0.5B</strong> - 500M parameters, higher quality but resource-intensive</li>
+                    <li><strong>pyttsx3</strong> - Local system voices, fully offline</li>
+                </ul>
+            </li>
+            <li><strong>Language Model (LLM):</strong> Configurable, defaults to locally-run open-source models</li>
+        </ul>
+        <p>All AI processing occurs locally. Model weights are downloaded once and cached on your machine.</p>
+        
+        <h2>9. Data Retention</h2>
+        <ul>
+            <li>Session data: Cleared when you end a session or close the application</li>
+            <li>Safety violation logs: Retained until you manually delete them</li>
+        </ul>
+        
+        <h2>10. Your Rights</h2>
+        <p>Since this is a self-hosted application, you have complete control over your data:</p>
+        <ul>
+            <li><strong>Access:</strong> All data is stored locally and accessible to you</li>
+            <li><strong>Deletion:</strong> You can delete any stored data at any time</li>
+            <li><strong>Portability:</strong> All logs are stored in JSON format for easy export</li>
+            <li><strong>Modification:</strong> You can modify the application's behavior through the source code</li>
+        </ul>
+        
+        <h2>11. Security</h2>
+        <p>
+            Data security depends on your deployment configuration. We recommend:
+        </p>
+        <ul>
+            <li>Using HTTPS for all connections</li>
+            <li>Keeping your system and dependencies updated</li>
+            <li>Restricting network access to trusted users only</li>
+            <li>Regularly reviewing and clearing safety violation logs</li>
+        </ul>
+        
+        <h2>12. Changes to This Policy</h2>
+        <p>
+            This privacy policy may be updated as the application evolves. 
+            Check the "Last Updated" date at the top of this document for the most recent version.
+        </p>
+        
+        <h2>13. Contact</h2>
+        <p>
+            For questions about this privacy policy or the application, please open an issue on the 
+            <a href="https://github.com/KoJesko/intentioned.tech" target="_blank">GitHub repository</a>.
+        </p>
+    </div>
+</body>
+</html>

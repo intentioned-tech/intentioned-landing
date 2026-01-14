@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Intentioned</title>
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --card-bg: #16161f;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b0;
+            --text-muted: #606070;
+            --accent: #6366f1;
+            --border-color: rgba(255, 255, 255, 0.08);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            color: var(--accent);
+        }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 32px;
+        }
+        
+        .faq-item {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .faq-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .faq-question::before {
+            content: "Q";
+            background: var(--accent);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        
+        .faq-answer {
+            color: var(--text-secondary);
+            padding-left: 36px;
+        }
+        
+        .faq-answer p {
+            margin-bottom: 12px;
+        }
+        
+        .faq-answer p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .highlight-box {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+        
+        .warning-box {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+        
+        .info-box {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+        
+        ul {
+            padding-left: 20px;
+            margin: 12px 0;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 24px;
+            color: var(--accent);
+        }
+        
+        .category-header {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin: 32px 0 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .category-header:first-of-type {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← Back to Home</a>
+        
+        <h1>Frequently Asked Questions</h1>
+        <p class="subtitle">Common questions about Intentioned and social skills training</p>
+        
+        <div class="category-header">Moderation & Safety</div>
+        
+        <div class="faq-item">
+            <div class="faq-question">Why is the default moderation prompt not strict at all?</div>
+            <div class="faq-answer">
+                <p>
+                    Modern large language models (LLMs) like Qwen, Gemma, and others already have extensive built-in safety 
+                    guardrails and content filtering. These models are trained to refuse harmful requests, avoid generating 
+                    dangerous content, and maintain ethical boundaries by default.
+                </p>
+                <p>
+                    Adding an overly strict moderation layer on top of these already-cautious models creates a problematic 
+                    "double filtering" effect that severely impedes innocent conversations. Users practicing difficult 
+                    scenarios—like handling an angry customer, negotiating assertively, or discussing sensitive topics 
+                    in therapy contexts—would constantly trigger false positives.
+                </p>
+                <div class="highlight-box">
+                    <strong>Example:</strong> A user practicing "How do I tell my boss I'm overwhelmed?" might use words 
+                    like "stressed," "can't cope," or "breaking down." Overly strict moderation would flag this as a 
+                    mental health crisis, interrupting legitimate professional communication practice.
+                </div>
+                <p>
+                    Our moderation is designed to catch only the most extreme cases (direct, actionable threats to real 
+                    individuals) while allowing the natural flow of difficult conversation practice. The underlying 
+                    LLM handles the rest.
+                </p>
+            </div>
+        </div>
+        
+        <div class="category-header">Technical Requirements</div>
+        
+        <div class="faq-item">
+            <div class="faq-question">What language models can I use?</div>
+            <div class="faq-answer">
+                <p>Intentioned supports a wide range of language models through HuggingFace Transformers:</p>
+                <ul>
+                    <li><strong>Qwen 2.5 (Recommended):</strong> 1B, 3B, 7B variants - excellent multilingual support</li>
+                    <li><strong>Google Gemma:</strong> 2B, 7B, 9B variants - good for general conversation</li>
+                    <li><strong>Llama 3:</strong> 8B variant - strong English performance</li>
+                    <li><strong>Mistral:</strong> 7B variant - fast inference</li>
+                    <li><strong>GEITje (Dutch):</strong> 7B - specialized for Dutch language</li>
+                </ul>
+                <div class="info-box">
+                    <strong>VRAM Requirements:</strong>
+                    <ul style="margin-bottom: 0;">
+                        <li>1-3B models: 4-6GB VRAM (RTX 3060 12GB works great)</li>
+                        <li>7-9B models: 8-12GB VRAM (RTX 3080/3090 recommended)</li>
+                        <li>4-bit quantization reduces requirements by ~60%</li>
+                    </ul>
+                </div>
+                <p>
+                    Configure your model in the <code>config.json</code> file or through the configuration tool. 
+                    Models are automatically downloaded from HuggingFace on first use.
+                </p>
+            </div>
+        </div>
+        
+        <div class="category-header">Research & Evidence</div>
+        
+        <div class="faq-item">
+            <div class="faq-question">Are there any studies to back this software up?</div>
+            <div class="faq-answer">
+                <p>
+                    Intentioned is currently an Honors Thesis research project. While the software itself is new, 
+                    it is built on well-established research in several fields:
+                </p>
+                <ul>
+                    <li><strong>Virtual Reality Social Skills Training:</strong> Studies show VR-based social practice 
+                    improves outcomes for individuals with autism (Parsons & Mitchell, 2002; Kandalaft et al., 2013)</li>
+                    <li><strong>Conversational AI for Therapy:</strong> Research on chatbot-assisted CBT shows 
+                    promise for anxiety and social phobia (Fitzpatrick et al., 2017)</li>
+                    <li><strong>Speech Analytics:</strong> Filler word reduction and pacing feedback have been 
+                    used in public speaking training for decades (Toastmasters International research)</li>
+                    <li><strong>Eye Contact Training:</strong> Gaze-contingent feedback improves social attention 
+                    in autism spectrum conditions (Tanaka et al., 2010)</li>
+                </ul>
+                <div class="warning-box">
+                    <strong>Disclaimer:</strong> Intentioned is an educational tool, not a medical device. 
+                    It is not a replacement for professional speech therapy, counseling, or clinical treatment. 
+                    If you have a diagnosed condition, please consult with qualified healthcare professionals.
+                </div>
+                <p>
+                    We are actively collecting data (with user consent) to publish formal efficacy studies. 
+                    If you're interested in participating in research or collaborating academically, 
+                    please contact us.
+                </p>
+            </div>
+        </div>
+        
+        <div class="category-header">Pricing & Licensing</div>
+        
+        <div class="faq-item">
+            <div class="faq-question">What is the price of the software?</div>
+            <div class="faq-answer">
+                <p>
+                    <strong>Pricing has not been finalized yet.</strong> The software is currently in beta/demo phase 
+                    as we gather user feedback and refine the product.
+                </p>
+                <div class="highlight-box">
+                    <strong>What we can share:</strong>
+                    <ul style="margin-bottom: 0;">
+                        <li>The demo on this website is free to use</li>
+                        <li>We plan to offer multiple licensing tiers (Personal, Professional, Enterprise, Educational)</li>
+                        <li>Academic and non-profit discounts will be available</li>
+                        <li>Self-hosted deployment will be an option for privacy-conscious organizations</li>
+                    </ul>
+                </div>
+                <p>
+                    Sign up for our mailing list or follow the project to be notified when pricing is announced.
+                </p>
+            </div>
+        </div>
+        
+        <div class="category-header">Hardware & Availability</div>
+        
+        <div class="faq-item">
+            <div class="faq-question">If the market gets bad for GPUs and other PC parts due to tariff issues, how will it impact me being able to obtain parts?</div>
+            <div class="faq-answer">
+                <p>
+                    This is a valid concern, especially for users in the United States and Europe where tariffs 
+                    on electronics can significantly impact pricing. Here's our perspective:
+                </p>
+                <ul>
+                    <li><strong>Used Market:</strong> The RTX 3060 12GB and RTX 3090 are now previous-generation 
+                    cards with a healthy used market. Prices on these cards tend to be more stable.</li>
+                    <li><strong>Cloud Alternatives:</strong> For users who cannot obtain local hardware, 
+                    cloud GPU services (Vast.ai, RunPod, Lambda Labs) offer hourly rentals.</li>
+                    <li><strong>CPU Fallback:</strong> While slower, models can run on CPU with llama.cpp 
+                    for users without GPU access.</li>
+                    <li><strong>Lighter Models:</strong> We're optimizing for smaller models (1-3B parameters) 
+                    that run on more accessible hardware like the RTX 4060.</li>
+                </ul>
+                <div class="info-box">
+                    <strong>Recommended Budget Build (2026):</strong> An RTX 3060 12GB (~€285 used) with a 
+                    Ryzen 5 5600 and 32GB RAM provides excellent performance for Intentioned.
+                </div>
+                <p>
+                    We monitor hardware markets and will update our recommendations as conditions change.
+                </p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">Where do you do GPU installs as of now?</div>
+            <div class="faq-answer">
+                <p>
+                    <strong>We do not currently offer hardware installation services.</strong>
+                </p>
+                <p>
+                    Intentioned is a software product. However, we understand that not everyone is comfortable 
+                    installing GPUs or setting up AI environments. Here are some resources:
+                </p>
+                <ul>
+                    <li><strong>Local PC Shops:</strong> Most computer repair shops can install a GPU for a small fee ($20-50)</li>
+                    <li><strong>YouTube Tutorials:</strong> GPU installation is straightforward—search "how to install GPU" 
+                    for step-by-step video guides</li>
+                    <li><strong>Pre-built Systems:</strong> Consider purchasing a pre-built PC with GPU included 
+                    if you're not comfortable with hardware</li>
+                </ul>
+                <div class="warning-box">
+                    <strong>Future Plans:</strong> We may offer white-glove installation services or 
+                    partner with IT service providers in the future. This is not currently available.
+                </div>
+            </div>
+        </div>
+        
+        <div class="category-header">Language Support</div>
+        
+        <div class="faq-item">
+            <div class="faq-question">What languages does Intentioned support?</div>
+            <div class="faq-answer">
+                <p>
+                    Intentioned is designed to be language-universal, especially for the EU market:
+                </p>
+                <ul>
+                    <li><strong>Speech-to-Text (STT):</strong> NVIDIA Parakeet supports 25+ languages including 
+                    English, Dutch, German, French, Spanish, Italian, Polish, and more</li>
+                    <li><strong>Text-to-Speech (TTS):</strong> Kokoro currently supports English (US/UK). 
+                    We're working on adding European language voices</li>
+                    <li><strong>LLM Conversations:</strong> Qwen 2.5 and Gemma models support multilingual 
+                    conversation in dozens of languages</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>EU Language Priority:</strong> We are prioritizing Dutch, German, and French 
+                    voice support for enterprise customers in the Netherlands and surrounding regions.
+                </div>
+                <p>
+                    To configure language settings, adjust the STT language parameter in your configuration 
+                    or contact us for enterprise multilingual deployments.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

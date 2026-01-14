@@ -634,7 +634,7 @@
             <span class="hero-badge-dot"></span>
             <span>100% Offline • GDPR Compliant</span>
         </div>
-        <h1>Master Every <div class="hero-word-rotator"><div class="hero-word-wrapper" id="heroWordWrapper"></div></div></h1>
+        <h1>Master Every <span class="hero-word-rotator"><span class="hero-word-wrapper" id="heroWordWrapper"></span></span></h1>
         <p class="hero-subtitle">
             Privacy-first social dynamics training. Powered by local LLMs and real-time voice analysis. 
             No cloud, no latency, no data leaks.
@@ -921,10 +921,10 @@
         if (wrapper) {
             // Add words + clone of first word for seamless loop
             [...heroWords, heroWords[0]].forEach(word => {
-                const div = document.createElement('div');
-                div.className = 'hero-word';
-                div.textContent = word;
-                wrapper.appendChild(div);
+                const span = document.createElement('span');
+                span.className = 'hero-word';
+                span.textContent = word;
+                wrapper.appendChild(span);
             });
         }
 

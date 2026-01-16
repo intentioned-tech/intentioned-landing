@@ -987,17 +987,28 @@
             submitBtn.textContent = 'Subscribing...';
             
             try {
-                // For now, store in localStorage until backend is ready
-                const subscribers = JSON.parse(localStorage.getItem('intentioned_subscribers') || '[]');
-                if (!subscribers.includes(email)) {
-                    subscribers.push(email);
-                    localStorage.setItem('intentioned_subscribers', JSON.stringify(subscribers));
-                }
+                const response = await fetch('https://license.intentioned.tech/subscribe', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        language: navigator.language?.split('-')[0] || 'en',
+                        consent_launch_notification: true
+                    })
+                });
                 
-                messageEl.style.color = 'var(--success)';
-                messageEl.textContent = '✅ Thanks for subscribing! We\'ll notify you when we launch.';
-                document.getElementById('emailInput').value = '';
-                submitBtn.textContent = 'Subscribed!';
+                const data = await response.json();
+                
+                if (data.success) {
+                    messageEl.style.color = 'var(--success)';
+                    messageEl.textContent = '✅ ' + (data.message || 'Thanks for subscribing! We\'ll notify you when we launch.');
+                    document.getElementById('emailInput').value = '';
+                    submitBtn.textContent = 'Subscribed!';
+                } else {
+                    throw new Error(data.reason || 'Subscription failed');
+                }
             } catch (err) {
                 messageEl.style.color = '#ef4444';
                 messageEl.textContent = '❌ Something went wrong. Please try again.';

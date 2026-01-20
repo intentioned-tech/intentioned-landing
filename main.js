@@ -4,6 +4,44 @@
 (function() {
     'use strict';
 
+    // Trigger page load animations
+    window.addEventListener('load', function() {
+        // Small delay for smoother effect
+        setTimeout(function() {
+            document.body.classList.add('loaded');
+        }, 100);
+    });
+
+    // Scroll-triggered animations with Intersection Observer
+    const scrollObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Optional: unobserve after animation (performance)
+                // scrollObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    // Observe elements with staggered delays for bento cards
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add scroll animation class to section headers and cards
+        document.querySelectorAll('.section-header, .terminal, .stat-card, .tech-pills, .cta h2, .cta p, .cta > div').forEach(function(el) {
+            el.classList.add('animate-on-scroll');
+            scrollObserver.observe(el);
+        });
+
+        // Bento cards with staggered animation
+        document.querySelectorAll('.bento-card').forEach(function(card, index) {
+            card.classList.add('animate-on-scroll');
+            card.style.transitionDelay = (index * 0.1) + 's';
+            scrollObserver.observe(card);
+        });
+    });
+
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -84,23 +122,6 @@
     if (wrapper) {
         scheduleHeroWordRotate();
     }
-
-    // Intersection Observer for fade-in animations
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.bento-card').forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.6s, transform 0.6s';
-        observer.observe(card);
-    });
 
     // Mailing list form handler
     const mailingListForm = document.getElementById('mailingListForm');

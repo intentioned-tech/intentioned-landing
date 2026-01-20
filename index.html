@@ -189,12 +189,14 @@
         }
 
         .navbar-inner {
-            margin: 4%;
-            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
             gap: 1rem;
-            width: 60%;
-            display: flex;
+            width: 100%;
+            padding: clamp(0.75rem, 2vw, 1rem) 1.5rem;
         }
 
         .logo {

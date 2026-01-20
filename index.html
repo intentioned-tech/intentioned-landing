@@ -7,12 +7,15 @@
     <meta name="description" content="Privacy-first social skills training. Powered by local LLMs and real-time voice analysis. No cloud, no latency, no data leaks.*">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Preload font CSS for better LCP -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
-    <!-- Async load fonts to prevent render blocking -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
     <style>
+        /* Critical font fallback - prevents FOUT/CLS while Inter loads */
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400 800;
+            font-display: swap;
+            src: local('Inter'), local('Arial'), local('Helvetica Neue'), local('sans-serif');
+        }
         :root {
             --bg-primary: #0a0a0a;
             --bg-secondary: #111111;
@@ -1019,6 +1022,20 @@
                 submitBtn.textContent = 'Subscribe';
             }
         });
+
+        // Async load Google Fonts after page render (non-blocking)
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => loadFonts());
+        } else {
+            setTimeout(loadFonts, 100);
+        }
+        
+        function loadFonts() {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap';
+            document.head.appendChild(link);
+        }
     </script>
 </body>
 </html>

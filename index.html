@@ -182,7 +182,7 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: clamp(0.75rem, 2vw, 1rem) 1.5rem;
+            padding: 0;
             background: rgba(10, 10, 10, 0.8);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-subtle);
@@ -196,6 +196,7 @@
             align-items: center;
             gap: 1rem;
             width: 100%;
+            padding: clamp(0.75rem, 2vw, 1rem) 1.5rem;
         }
 
         .logo {
@@ -720,10 +721,6 @@
 
         /* Responsive */
         @media (max-width: 900px) {
-            .navbar {
-                padding: 0.75rem 1rem;
-            }
-
             .bento-grid {
                 grid-template-columns: 1fr;
             }
@@ -739,9 +736,16 @@
             .hamburger {
                 display: flex;
             }
+
+            .navbar-inner {
+                padding: 0.75rem 1rem;
+            }
         }
 
         @media (max-width: 600px) {
+            .navbar-inner {
+                padding: 0.75rem 1rem;
+            }
 
             .hero {
                 padding: 5rem 1rem 3rem;

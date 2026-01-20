@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize words
     if (wrapper) {
         // Add words + clone of first word for seamless loop
-        [...heroWords, heroWords[0]].forEach(function(word) {
+        [...heroWords, heroWords[0]].forEach(word => {
             const span = document.createElement('span');
             span.className = 'hero-word';
             span.textContent = word;
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!wrapper) return;
         const delay = 3500 + Math.random() * 4500;
         
-        setTimeout(function() {
+        setTimeout(() => {
             currentIndex++;
             
             // Animate
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Handle loop
             if (currentIndex === heroWords.length) {
                 // Wait for transition to finish, then snap back
-                setTimeout(function() {
+                setTimeout(() => {
                     wrapper.style.transition = 'none';
                     currentIndex = 0;
                     wrapper.style.transform = 'translateY(0)';
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mailing list form handler
     const mailingListForm = document.getElementById('mailingListForm');
     if (mailingListForm) {
-        mailingListForm.addEventListener('submit', async function(e) {
+        mailingListForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('emailInput').value;
             const messageEl = document.getElementById('mailingListMessage');
@@ -200,6 +200,45 @@ document.addEventListener('DOMContentLoaded', function() {
         requestIdleCallback(loadFonts);
     } else {
         setTimeout(loadFonts, 100);
+    }
+})();
+
+// Mobile hamburger menu - needs to run after DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', hamburger.classList.contains('active'));
+            
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Close menu when clicking outside
+        mobileMenu.addEventListener('click', function(e) {
+            if (e.target === mobileMenu) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+        });
     }
 });
 

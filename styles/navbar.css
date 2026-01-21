@@ -1,22 +1,40 @@
-/* navbar.css */
+/* navbar.css - Additional navbar refinements */
 
-.navbar {
-    background-color: #3498db; /* Light blue for better visibility */
-    padding: 20px;             /* Increase padding to make space for content */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
+/* Hamburger button alignment fix */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
 }
 
-.navbar-brand {
-    color: #ffffff;            /* White text for better visibility */
-    font-size: 24px;           /* Increase font size for readability */
+.hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text-primary);
+    margin: 3px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Adjust padding for the navbar items */
-.navbar-nav > li {
-    display: inline-block;
-    margin-right: 10px;         /* Add some space between menu items */
+/* Mobile: show hamburger, hide nav-links */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .navbar-inner {
+        padding: 0.5rem 16px;
+    }
 }
-
-/* Apply specific styles to each menu item (e.g., "Home", "Services", etc.) */
-#home-item a { color: #ffffff; }
-#services-item a { color: #ffffff; }

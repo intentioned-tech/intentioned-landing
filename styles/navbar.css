@@ -6,9 +6,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
-    padding: 8px;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -36,5 +36,22 @@
     
     .navbar-inner {
         padding: 0.5rem 16px;
+    }
+}
+
+/* Portrait mode: larger touch target for hamburger */
+@media (max-width: 480px), (orientation: portrait) and (max-width: 768px) {
+    .hamburger {
+        width: 48px;
+        height: 48px;
+        padding: 12px;
+    }
+    
+    .hamburger span {
+        width: 24px;
+    }
+    
+    .navbar-inner {
+        padding: 0.4rem 12px;
     }
 }

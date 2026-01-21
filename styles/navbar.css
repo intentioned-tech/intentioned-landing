@@ -6,37 +6,17 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
 }
 
-.navbar-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-.logo {
+.navbar-brand {
     color: #ffffff;            /* White text for better visibility */
     font-size: 24px;           /* Increase font size for readability */
-    font-weight: 700;
 }
 
-/* Adjust padding for the nav links container */
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 10px;                 /* Add space between menu items */
+/* Adjust padding for the navbar items */
+.navbar-nav > li {
+    display: inline-block;
+    margin-right: 10px;         /* Add some space between menu items */
 }
 
-/* Apply styles to each nav link */
-.nav-link {
-    color: #ffffff;
-    text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    transition: background-color 0.2s ease;
-}
-
-.nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
+/* Apply specific styles to each menu item (e.g., "Home", "Services", etc.) */
+#home-item a { color: #ffffff; }
+#services-item a { color: #ffffff; }

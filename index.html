@@ -1001,7 +1001,7 @@
             }
             
             .sustainability-card {
-                padding: 24px 16px;
+                padding: 20px 16px;
                 border-radius: 16px;
             }
             
@@ -1012,7 +1012,7 @@
             
             .sustainability-card .card-headline {
                 font-size: 1.75rem;
-                margin-bottom: 24px;
+                margin-bottom: 20px;
             }
             
             /* Force visibility - disable scroll animations on mobile */
@@ -1023,14 +1023,12 @@
                 filter: none !important;
             }
             
-            /* Transform table into stacked cards */
+            /* Transform table into grouped metric cards */
             .comparison-table {
-                display: flex;
-                flex-direction: column;
-                gap: 16px;
+                display: block;
                 border: none;
                 border-radius: 0;
-                margin-bottom: 24px;
+                margin-bottom: 20px;
             }
             
             /* Hide all headers */
@@ -1038,92 +1036,106 @@
                 display: none;
             }
             
-            /* Style metric labels as card headers */
+            /* Metric label - subtle gray header inside card */
             .table-cell.label {
-                background: rgba(99, 102, 241, 0.15);
-                border-radius: 12px 12px 0 0;
-                padding: 12px 16px;
-                font-size: 0.85rem;
-                font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: 0.05em;
-                color: var(--accent-purple);
+                background: #1a1a1a;
+                border: 1px solid rgba(255, 255, 255, 0.08);
                 border-bottom: none;
-                margin-top: 8px;
+                border-radius: 10px 10px 0 0;
+                padding: 10px 14px 6px;
+                font-size: 0.65rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                color: #71717a;
+                margin-top: 12px;
             }
             
             .table-cell.label:first-of-type {
                 margin-top: 0;
             }
             
-            /* Style the value cells */
+            /* Value cells - minimal list view */
             .table-cell:not(.label) {
-                background: rgba(255, 255, 255, 0.03);
-                padding: 12px 16px;
-                border-bottom: none;
+                background: #1a1a1a;
+                border-left: 1px solid rgba(255, 255, 255, 0.08);
+                border-right: 1px solid rgba(255, 255, 255, 0.08);
+                padding: 4px 14px;
                 display: flex;
                 align-items: center;
-                gap: 8px;
+                gap: 6px;
+                font-size: 0.9rem;
+                line-height: 1.4;
             }
             
             .table-cell:not(.label)::before {
-                font-size: 14px;
                 flex-shrink: 0;
+                font-size: 12px;
+            }
+            
+            /* Big Tech row - subtle red */
+            .table-cell.negative {
+                color: #a1a1aa;
+                border-bottom: none;
             }
             
             .table-cell.negative::before {
-                content: "❌ Big Tech:";
-                color: #f87171;
-                font-weight: 600;
-                min-width: 90px;
+                content: "❌";
+                margin-right: 4px;
+            }
+            
+            /* Us row - bright green emphasis */
+            .table-cell.positive {
+                color: #f4f4f5;
+                font-weight: 500;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 0 0 10px 10px;
+                padding-bottom: 10px;
             }
             
             .table-cell.positive::before {
-                content: "✅ Us:";
-                color: #4ade80;
-                font-weight: 600;
-                min-width: 90px;
-            }
-            
-            .table-cell.positive {
-                border-radius: 0 0 12px 12px;
-                margin-bottom: 0;
+                content: "✅";
+                margin-right: 4px;
             }
             
             /* Commitments section mobile */
             .commitments-section {
-                padding-top: 24px;
+                padding-top: 20px;
+                border-top-color: rgba(255, 255, 255, 0.06);
             }
             
             .commitments-header {
                 font-size: 10px;
-                margin-bottom: 16px;
+                margin-bottom: 12px;
             }
             
             .commitment-item {
-                padding: 12px 0;
+                padding: 10px 0;
                 gap: 12px;
+                border-bottom-color: rgba(255, 255, 255, 0.04);
             }
             
             .commitment-icon {
-                width: 36px;
-                height: 36px;
-                font-size: 16px;
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
                 border-radius: 8px;
             }
             
             .commitment-content h4 {
-                font-size: 1rem;
+                font-size: 0.95rem;
+                margin-bottom: 2px;
             }
             
             .commitment-content p {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
+                line-height: 1.4;
             }
             
             .sustainability-footer {
-                margin-top: 20px;
-                padding-top: 16px;
-                font-size: 0.7rem;
+                margin-top: 16px;
+                padding-top: 12px;
+                font-size: 0.65rem;
             }
         }
 

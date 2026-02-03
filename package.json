@@ -1,0 +1,16 @@
+{
+  "name": "intentioned-landing",
+  "version": "1.0.0",
+  "description": "Intentioned landing page - Cloudflare Pages static site",
+  "private": true,
+  "scripts": {
+    "dev": "npx wrangler pages dev . --local",
+    "deploy": "npx wrangler pages deploy ."
+  },
+  "keywords": ["intentioned", "landing", "cloudflare-pages"],
+  "author": "Intentioned",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
